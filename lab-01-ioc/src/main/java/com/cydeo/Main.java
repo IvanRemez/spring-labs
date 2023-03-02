@@ -12,6 +12,7 @@ public class Main {
 
         Saving saving = container.getBean(Saving.class);
         Current current = container.getBean(Current.class);
+        Currency currency = container.getBean(Currency.class);
 
         saving.initialize();
         current.initialize();
