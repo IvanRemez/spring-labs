@@ -3,12 +3,17 @@ package com.cydeo.service;
 import com.cydeo.model.Cart;
 import com.cydeo.model.Product;
 import com.cydeo.repository.CartRepository;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Component
+@AllArgsConstructor
 public class CartServiceImpl implements CartService{
     private CartRepository cartRepository;
     private StockService service;

@@ -1,24 +1,43 @@
 package com.cydeo;
+import com.cydeo.loosely.Balance;
+import com.cydeo.loosely.BalanceManager;
 import com.cydeo.tightly.BalanceService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
+
         UUID user = UUID.randomUUID();
 
-        CustomerBalance customerBalance = new CustomerBalance(user, BigDecimal.ZERO);
-        GiftCardBalance giftCardBalance = new GiftCardBalance(user, BigDecimal.ZERO);
+        Balance balance = new CustomerBalance();
+        balance.setUserId(user);
+        balance.setAmount(BigDecimal.ZERO);
 
-        customerBalance.addBalance(new BigDecimal(150));
-        giftCardBalance.addBalance(new BigDecimal(120));
+        ApplicationContext container = SpringApplication.run(Main.class, args);
 
-        BalanceService balanceService =
-                new BalanceService(customerBalance, giftCardBalance);
+        BalanceManager balanceManager = container.getBean(BalanceManager.class);
 
-        System.out.println(balanceService.checkoutFromCustomerBalance(new BigDecimal(80)));
-        System.out.println(balanceService.checkoutFromGiftBalance(new BigDecimal(80)));
+        Balance customerBalance =
+                container.getBean("customerBalance", CustomerBalance.class);
+        Balance giftCardBalance =
+                container.getBean("giftCardBalance", GiftCardBalance.class);
+
+        customerBalance.addBalance(new BigDecimal(79));
+        System.out.println(customerBalance.getAmount());
+
+        giftCardBalance.addBalance(new BigDecimal(59));
+        System.out.println(giftCardBalance.getAmount());
+
+        System.out.println(balanceManager.checkout(new BigDecimal(80), customerBalance));
+        System.out.println(balanceManager.checkout(new BigDecimal(60), giftCardBalance));
+
+        System.exit(0);
     }
 
 }
