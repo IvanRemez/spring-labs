@@ -18,8 +18,7 @@ public class Lab03YummyApplication {
 
         AuthorConfig authorConfig = container.getBean(AuthorConfig.class);
 
-//        System.out.println("authorConfig.getName() = " + authorConfig.getName());
-//        System.out.println("authorConfig.getSurname() = " + authorConfig.getSurname());
+        System.out.println("Author: " + authorConfig.getName() + " " + authorConfig.getSurname());
 
     }
 }

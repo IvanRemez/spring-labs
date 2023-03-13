@@ -14,7 +14,7 @@ public class FacebookShareServiceImpl implements ShareService {
 
         System.out.println("Shared on facebook");
         System.out.println("RecipeType: " + recipe.getRecipeType());
-        System.out.println("Recipe Name " + recipe.getName() );
+        System.out.println("Recipe Name: " + recipe.getName() );
         System.out.println("Ingredient List ");
         recipe.getIngredients().forEach(ingredients -> {
             System.out.println("    Ingredient Name " + ingredients.getName() + " Quantity : " + ingredients.getQuantity() +
