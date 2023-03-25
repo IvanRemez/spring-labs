@@ -25,8 +25,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> listProduct() {
-        // todo implement method
-        return new ArrayList<>();
+
+        return productRepository.findAll();
     }
 
     @Override
