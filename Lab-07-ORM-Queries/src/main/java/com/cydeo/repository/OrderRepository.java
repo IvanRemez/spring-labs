@@ -1,10 +1,12 @@
 package com.cydeo.repository;
 
+import com.cydeo.entity.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface OrderRepository {
+public interface OrderRepository extends JpaRepository<Order, Long> {
     //Write a derived query to get top 5 orders by order by total price desc
     //Write a derived query to get all orders by customer email
     //Write a derived query to get all orders by specific payment method

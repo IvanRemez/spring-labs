@@ -1,9 +1,11 @@
 package com.cydeo.repository;
 
+import com.cydeo.entity.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AddressRepository {
+public interface AddressRepository extends JpaRepository<Address, Long> {
     //Write a derived query to get all address with a specific customer
     //Write a derived query to get address with a specific street
     //Write a derived query to get top 3 address with a specific customer email
