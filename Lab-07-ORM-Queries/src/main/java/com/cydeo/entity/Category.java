@@ -14,4 +14,10 @@ public class Category extends BaseEntity {
 
     private String name;
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

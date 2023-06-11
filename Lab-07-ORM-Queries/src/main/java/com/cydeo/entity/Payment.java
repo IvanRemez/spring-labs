@@ -20,4 +20,11 @@ public class Payment extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paidPrice=" + paidPrice +
+                ", paymentMethod=" + paymentMethod +
+                '}';
+    }
 }

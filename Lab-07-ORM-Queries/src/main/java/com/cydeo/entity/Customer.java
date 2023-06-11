@@ -20,4 +20,14 @@ public class Customer extends BaseEntity {
 //    @OneToOne(mappedBy = "customer")
 //    private Balance balance;
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
 }

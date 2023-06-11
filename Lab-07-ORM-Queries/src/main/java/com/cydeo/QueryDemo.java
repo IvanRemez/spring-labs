@@ -29,5 +29,20 @@ public class QueryDemo implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        System.out.println("----------------ADDRESS-----------------");
+
+        System.out.println(addressRepository.findByStreet("Everett"));
+//        System.out.println(addressRepository.findAllByCustomer());
+        System.out.println(addressRepository.findTop3ByCustomerEmail("asturton0@list-manage.com"));
+        System.out.println(addressRepository.findAllByStreetStartsWith("Ever"));
+
+        System.out.println("----------------BALANCE-----------------");
+
+
+        System.out.println("----------------CART-ITEM-----------------");
+
+        System.out.println("----------------CART-----------------");
+
     }
 }

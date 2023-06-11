@@ -19,4 +19,12 @@ public class Balance extends BaseEntity {
     @OneToOne
     private Customer customer;
 
+    @Override
+    public String toString() {
+        return "Balance{" +
+                "amount=" + amount +
+                ", customer=" + customer +
+                '}';
+    }
+
 }

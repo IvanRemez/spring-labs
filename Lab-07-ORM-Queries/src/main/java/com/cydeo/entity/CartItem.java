@@ -19,4 +19,13 @@ public class CartItem extends BaseEntity {
     private Cart cart;
     @ManyToOne
     private Product product;
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "quantity=" + quantity +
+                ", cart=" + cart +
+                ", product=" + product +
+                '}';
+    }
 }

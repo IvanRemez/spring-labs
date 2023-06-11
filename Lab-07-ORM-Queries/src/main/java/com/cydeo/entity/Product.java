@@ -28,4 +28,14 @@ public class Product extends BaseEntity {
         inverseJoinColumns = @JoinColumn(name = "c.id"))
     private List<Category> categoryList;
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", remainingQuantity=" + remainingQuantity +
+                ", categoryList=" + categoryList +
+                '}';
+    }
 }

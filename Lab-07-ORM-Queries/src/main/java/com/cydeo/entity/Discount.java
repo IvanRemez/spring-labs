@@ -21,4 +21,12 @@ public class Discount extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private DiscountType discountType;
 
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "name='" + name + '\'' +
+                ", discount=" + discount +
+                ", discountType=" + discountType +
+                '}';
+    }
 }
