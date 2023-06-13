@@ -3,6 +3,7 @@ package com.cydeo.service.impl;
 import com.cydeo.dto.OrderDTO;
 import com.cydeo.dto.UpdateOrderDTO;
 import com.cydeo.entity.Order;
+import com.cydeo.exception.NotFoundException;
 import com.cydeo.mapper.MapperUtil;
 import com.cydeo.repository.OrderRepository;
 import com.cydeo.service.CartService;
@@ -44,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
 
     // find Order by ID inside DB (or throw Exception)
         Order orderToUpdate = orderRepository.findById(orderDTO.getId()).orElseThrow(
-                () -> new RuntimeException("Order not found"));
+                () -> new NotFoundException("Order not found"));
 
     // check if Order fields exist
         validateRelatedFieldsExist(orderDTO);
@@ -60,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO updateOrderById(Long id, UpdateOrderDTO updateOrderDTO) {
 
         Order orderToUpdate = orderRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Order not found"));
+                () -> new NotFoundException("Order not found"));
 
     // if User sends back same values, no need to update
         boolean changeDetected = false;
@@ -80,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
             Order updatedOrder = orderRepository.save(orderToUpdate);
             return mapperUtil.convert(updatedOrder, new OrderDTO());
         } else {
-            throw new RuntimeException("No changes detected");
+            throw new NotFoundException("No changes detected");
         }
     }
 
@@ -89,15 +90,15 @@ public class OrderServiceImpl implements OrderService {
 
         if (!customerService.existById(orderDTO.getCustomerId())) {
 
-            throw new RuntimeException("Customer not found");
+            throw new NotFoundException("Customer not found");
         }
         if (!paymentService.existById(orderDTO.getPaymentId())) {
 
-            throw new RuntimeException("Payment not found");
+            throw new NotFoundException("Payment not found");
         }
         if (!cartService.existById(orderDTO.getCartId())) {
 
-            throw new RuntimeException("Cart not found");
+            throw new NotFoundException("Cart not found");
         }
     }
 
