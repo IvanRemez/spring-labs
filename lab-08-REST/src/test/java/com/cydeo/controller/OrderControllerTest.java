@@ -63,7 +63,7 @@ class OrderControllerTest {
     }
 
     @Test
-    public void getAddressList() throws Exception {
+    public void getOrderList() throws Exception {
 
         ResultActions actions = mvc.perform(MockMvcRequestBuilders
                         .get("/api/v1/order")

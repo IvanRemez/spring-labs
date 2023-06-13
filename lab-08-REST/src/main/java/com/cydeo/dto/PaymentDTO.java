@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class PaymentDTO {
+
+    private Long id;
     private BigDecimal paidPrice;
     private PaymentMethod paymentMethod;
 }
