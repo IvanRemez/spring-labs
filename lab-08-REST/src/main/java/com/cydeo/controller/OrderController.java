@@ -2,6 +2,7 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.OrderDTO;
 import com.cydeo.dto.UpdateOrderDTO;
+import com.cydeo.enums.PaymentMethod;
 import com.cydeo.model.ResponseWrapper;
 import com.cydeo.service.OrderService;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,29 @@ public class OrderController {
 
         return ResponseEntity.ok(new ResponseWrapper("Order updated successfully",
                 orderService.updateOrderById(id, updateOrderDTO), HttpStatus.OK));
+    }
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createOrder(@Valid @RequestBody OrderDTO orderDTO) {
+
+        return ResponseEntity.ok(new ResponseWrapper("Order created",
+                orderService.createOrder(orderDTO), HttpStatus.OK));
+    }
+
+    @GetMapping("/paymentMethod/{paymentMethod}")
+    public ResponseEntity<ResponseWrapper> getOrderListByPaymentMethod(
+            @PathVariable("paymentMethod") PaymentMethod paymentMethod) {
+
+        return ResponseEntity.ok(new ResponseWrapper("Order list retrieved",
+                orderService.getOrderListByPaymentMethod(paymentMethod), HttpStatus.OK));
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<ResponseWrapper> getOrderListByEmail(
+            @PathVariable("email") String email) {
+
+        return ResponseEntity.ok(new ResponseWrapper("Order list retrieved",
+                orderService.getOrderListByEmail(email), HttpStatus.OK));
     }
 
 }

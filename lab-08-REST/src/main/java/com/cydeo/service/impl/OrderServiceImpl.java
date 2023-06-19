@@ -3,6 +3,7 @@ package com.cydeo.service.impl;
 import com.cydeo.dto.OrderDTO;
 import com.cydeo.dto.UpdateOrderDTO;
 import com.cydeo.entity.Order;
+import com.cydeo.enums.PaymentMethod;
 import com.cydeo.exception.NotFoundException;
 import com.cydeo.mapper.MapperUtil;
 import com.cydeo.repository.OrderRepository;
@@ -83,6 +84,32 @@ public class OrderServiceImpl implements OrderService {
         } else {
             throw new NotFoundException("No changes detected");
         }
+    }
+
+    @Override
+    public OrderDTO createOrder(OrderDTO orderDTO) {
+
+        Order order = orderRepository.save(mapperUtil.convert(orderDTO, new Order()));
+
+        return mapperUtil.convert(order, new OrderDTO());
+    }
+
+    @Override
+    public List<OrderDTO> getOrderListByPaymentMethod(PaymentMethod paymentMethod) {
+
+        List<Order> orders = orderRepository.findAllByPayment_PaymentMethod(paymentMethod);
+
+        return orders.stream().map(order -> mapperUtil.convert(
+                order, new OrderDTO())).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OrderDTO> getOrderListByEmail(String email) {
+
+        List<Order> orders = orderRepository.findAllByCustomer_Email(email);
+
+        return orders.stream().map(order -> mapperUtil.convert(
+                order, new OrderDTO())).collect(Collectors.toList());
     }
 
     private void validateRelatedFieldsExist(OrderDTO orderDTO) {
