@@ -8,9 +8,11 @@ http://ec2-3-84-192-243.compute-1.amazonaws.com:8080/swagger-ui/index.html
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableFeignClients
 public class Lab08RestApplication {
 
     public static void main(String[] args) {

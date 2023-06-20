@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/order")
@@ -26,6 +27,14 @@ public class OrderController {
 
         return ResponseEntity.ok(new ResponseWrapper("Orders are successfully retrieved",
                 orderService.retrieveOrderList(), HttpStatus.OK));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseWrapper> getOrderById(
+            @PathVariable("id") Long id, @RequestParam(required = false) Optional<String> currency) {
+
+        return ResponseEntity.ok(new ResponseWrapper("Order successfully retrieved",
+                orderService.retrieveOrderDetailById(id, currency), HttpStatus.OK));
     }
 
     @PutMapping

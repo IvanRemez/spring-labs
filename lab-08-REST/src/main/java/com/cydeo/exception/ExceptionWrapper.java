@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -14,6 +15,7 @@ public class ExceptionWrapper {
 
     private String message;
     private HttpStatus httpStatus;
+    private LocalDateTime timestamp;
 
     private Integer errorCount;
     private List<ValidationError> validationErrorList;

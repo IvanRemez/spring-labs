@@ -5,6 +5,7 @@ import com.cydeo.dto.UpdateOrderDTO;
 import com.cydeo.enums.PaymentMethod;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderService {
 
@@ -19,4 +20,6 @@ public interface OrderService {
     List<OrderDTO> getOrderListByPaymentMethod(PaymentMethod paymentMethod);
 
     List<OrderDTO> getOrderListByEmail(String email);
+
+    OrderDTO retrieveOrderDetailById(Long id, Optional<String> currency);
 }
