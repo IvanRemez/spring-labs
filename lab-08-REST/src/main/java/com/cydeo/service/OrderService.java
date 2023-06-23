@@ -4,6 +4,7 @@ import com.cydeo.dto.OrderDTO;
 import com.cydeo.dto.UpdateOrderDTO;
 import com.cydeo.enums.PaymentMethod;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +23,6 @@ public interface OrderService {
     List<OrderDTO> getOrderListByEmail(String email);
 
     OrderDTO retrieveOrderDetailById(Long id, Optional<String> currency);
+
+    BigDecimal placeOrder(PaymentMethod paymentMethod, Long cartId, Long customerId);
 }
