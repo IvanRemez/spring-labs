@@ -17,4 +17,7 @@ public class Discount extends BaseEntity{
     private BigDecimal discount;
     @Enumerated(value = EnumType.STRING)
     private DiscountType discountType;
+
+    //newly added
+    private BigDecimal minimumAmount;
 }
