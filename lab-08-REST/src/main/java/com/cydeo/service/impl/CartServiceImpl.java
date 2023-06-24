@@ -97,22 +97,22 @@ public class CartServiceImpl implements CartService {
         // we retrieve discount by name and if there is no discount with the name, we need to throw exception
         Discount discount = discountRepository.findFirstByName(discountName);
         if (discount == null) {
-            throw new RuntimeException("Discount couldn't find ");
+            throw new RuntimeException("Couldn't find discount");
         }
 
         // discount amount also needs to have a value, otherwise we will throw exception
         if (discount.getDiscount() == null) {
-            throw new RuntimeException("Discount amount can not be null ");
+            throw new RuntimeException("Discount amount cannot be null");
         }
 
         // discount minimum amount also needs to have a value, otherwise we will throw exception
         if (discount.getMinimumAmount() == null) {
-            throw new RuntimeException("Discount minimum amount can not be null ");
+            throw new RuntimeException("Discount minimum amount cannot be null");
         }
 
         // discount minimum amount and discount amount also needs to have a value bigger than ZERO, otherwise we will throw exception
         if (discount.getMinimumAmount().compareTo(BigDecimal.ZERO) <= 0 || discount.getDiscount().compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException("Discount amount needs be bigger than zero ");
+            throw new RuntimeException("Discount amount needs be bigger than zero");
         }
 
         // without having any item in cart, if customer try to add discount to cart we need to throw exception
