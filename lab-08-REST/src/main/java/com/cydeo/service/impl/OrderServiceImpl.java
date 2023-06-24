@@ -240,7 +240,7 @@ public class OrderServiceImpl implements OrderService {
         // if there is no cart in DB, we need to throw exception
         // Once customer place order cart status will be SOLD and after that if customer would like to buy something
         // again a new cart will be created. That's why a customer can have multiple carts but only one cart with CREATE status
-        // can be exist run time. All other carts should be SOLD status
+        // can exist at run time. All other carts should be SOLD status
         if (cartList == null || cartList.size() == 0) {
             throw new RuntimeException("Cart couldn't find or cart is empty");
         }
@@ -269,7 +269,7 @@ public class OrderServiceImpl implements OrderService {
             lastDiscountAmount = cartService.applyDiscountToCartIfApplicableAndCalculateDiscountAmount(cart.getDiscount().getName(), cart);
         }
 
-        // we are calculating te cart total amount to have gross amount
+        // we are calculating the cart total amount to have gross amount
         BigDecimal totalCartAmount = calculateTotalCartAmount(cartItemList);
 
         Payment payment = new Payment();

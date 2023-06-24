@@ -35,7 +35,7 @@ public class CartServiceImplUnitTest {
     private CartItemRepository cartItemRepository;
     @Mock
     private DiscountRepository discountRepository;
-    @InjectMocks
+    @InjectMocks        // We are Injecting Mocks into this class and testing it4s methods
     private CartServiceImpl cartService;
 
     @Test
