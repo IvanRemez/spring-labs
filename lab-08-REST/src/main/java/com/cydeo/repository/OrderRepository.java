@@ -1,7 +1,9 @@
 package com.cydeo.repository;
 
+import com.cydeo.entity.Cart;
 import com.cydeo.entity.Order;
 import com.cydeo.enums.PaymentMethod;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -47,4 +49,5 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     @Query("SELECT o FROM Order o WHERE o.paidPrice<>o.totalPrice AND o.cart.discount IS NOT NULL")
     List<Order> findAllByPaidPriceAndTotalPriceAEqualsAndCartDiscountIdIsNull();
 
+    Order findAllByCart(Cart cart);
 }
